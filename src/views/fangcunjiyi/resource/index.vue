@@ -42,7 +42,7 @@
       <el-table-column label="邮折" align="center" prop="ticket.ticket_name" />
       <el-table-column label="图片" align="center" prop="resource_url">
         <template #default="scope">
-            <el-image style="" z-index=2  close-on-press-escape=false :src="scope.row.resource_url" fit="cover" @click="showPicViwerx"></el-image>
+            <el-image style="height:50px;" z-index=2  close-on-press-escape=false :src="scope.row.resource_url" fit="cover" @click="showPicViwerx"></el-image>
           <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.resource_url]"></el-image-viewer>
         </template>
       </el-table-column>
