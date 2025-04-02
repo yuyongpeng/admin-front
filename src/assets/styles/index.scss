@@ -1,10 +1,10 @@
-@import './variables.module.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
-@import './btn.scss';
-@import './ruoyi.scss';
+// @use './variables.module.scss' as *;
+@use './mixin.scss' as *;
+@use './transition.scss' as *;
+@use './element-ui.scss' as *;
+@use './sidebar' as *;
+@use './btn.scss' as *;
+@use './ruoyi.scss' as *;
 
 body {
   height: 100%;

@@ -7,3 +7,5 @@ export default function directive(app){
   app.directive('hasPermi', hasPermi)
   app.directive('copyText', copyText)
 }
+
+

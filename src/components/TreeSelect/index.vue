@@ -113,8 +113,9 @@ watch(valueId, () => {
 })
 </script>
 
-<style lang='scss' scoped>
-@import "@/assets/styles/variables.module.scss";
+<style lang="scss" scoped>
+@use "@/assets/styles/variables.module.scss" as *;
+@use "sass:color";
 
 .el-scrollbar .el-scrollbar__view .el-select-dropdown__item {
   padding: 0;
@@ -136,7 +137,7 @@ ul li .el-tree .el-tree-node__content {
 :deep(.el-tree-node__content:active),
 :deep(.is-current > div:first-child),
 :deep(.el-tree-node__content:focus) {
-  background-color: mix(#fff, $--color-primary, 90%);
-  color: $--color-primary;
+  background-color: color.mix(#fff, $color-primary, 90%);
+  color: $color-primary;
 }
 </style>

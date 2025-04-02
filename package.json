@@ -1,12 +1,13 @@
 {
-  "name": "carole-admin",
+  "name": "admin-front",
   "version": "1.0.0",
-  "description": "carole管理系统",
+  "description": "管理系统",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:prod": "vite build",
+    "build": "vite build --mode development",
+    "build:prod": "vite build --mode production",
     "build:stage": "vite build --mode staging",
     "preview": "vite preview"
   },
@@ -29,12 +30,13 @@
     "vue-router": "4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "4.5.0",
-    "@vue/compiler-sfc": "3.3.9",
-    "sass": "1.69.5",
-    "unplugin-auto-import": "0.17.1",
-    "unplugin-vue-setup-extend-plus": "1.0.0",
-    "vite": "5.0.4",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/compiler-sfc": "3.5.13",
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.86.0",
+    "unplugin-auto-import": "19.1.1",
+    "unplugin-vue-setup-extend-plus": "1.0.1",
+    "vite": "^6.2.2",
     "vite-plugin-compression": "0.5.1",
     "vite-plugin-svg-icons": "2.0.1"
   }
