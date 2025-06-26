@@ -72,6 +72,8 @@ const showTip = computed(
   () => props.isShowTip && (props.fileType || props.fileSize)
 );
 
+// console.log(uploadList2[0]);
+
 watch(() => props.modelValue, val => {
   if (val) {
     // 首先将值转为数组

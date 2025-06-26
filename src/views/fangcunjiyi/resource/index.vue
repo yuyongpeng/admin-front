@@ -42,8 +42,8 @@
       <el-table-column label="邮折" align="center" prop="ticket.ticket_name" />
       <el-table-column label="图片" align="center" prop="resource_url">
         <template #default="scope">
-            <el-image style="height:50px;" z-index=2  close-on-press-escape=false :src="scope.row.resource_url" fit="cover" @click="showPicViwerx"></el-image>
-          <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.resource_url]"></el-image-viewer>
+          <el-image style="width: 100px; height: 100px" :src="scope.row.resource_url" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.resource_url]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
+          
         </template>
       </el-table-column>
       <el-table-column label="排序" align="center" prop="order" />
