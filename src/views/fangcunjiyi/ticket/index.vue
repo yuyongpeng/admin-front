@@ -52,9 +52,9 @@
             <el-image style="width: 100px; height: 100px" :src="scope.row.description" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.description]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
          </template>
        </el-table-column>
-       <el-table-column label="扫码着陆页" align="center" prop="loading_uri">
+       <el-table-column label="扫码着陆页" align="center" prop="landing_uri">
          <template #default="scope">
-            <el-image style="width: 100px; height: 100px" :src="scope.row.loading_uri" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.loading_uri]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
+            <el-image style="width: 100px; height: 100px" :src="scope.row.landing_uri" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.loading_uri]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
          </template>
        </el-table-column>
        <el-table-column label="NFT原图" align="center" prop="origin_uri">
