@@ -29,7 +29,8 @@
      </el-row>
  
      <el-table v-loading="loading" :data="postList" stripe="true" highlight-current-row="true" @selection-change="handleSelectionChange">
-       <el-table-column type="selection" width="20" align="center" />
+       <el-table-column type="selection" width="30" align="center" />
+       <el-table-column label="ID" width="60"  align="center" prop="id" />
        <el-table-column label="邮折" width="120"  align="center" prop="ticket_name" />
        <el-table-column label="封面图片" align="center" prop="cover_uri">
          <template #default="scope">
