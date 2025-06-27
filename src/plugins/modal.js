@@ -53,11 +53,12 @@ export default {
   },
   // 确认窗体
   confirm(content) {
-    return ElMessageBox.confirm(content, "系统提示", {
+    return ElMessageBox.confirm(content, '系统提示', {
+      distinguishCancelAndClose: true,
       confirmButtonText: '确定',
       cancelButtonText: '取消',
-      type: "warning",
-    })
+      type: 'warning',
+    });
   },
   // 提交内容
   prompt(content) {

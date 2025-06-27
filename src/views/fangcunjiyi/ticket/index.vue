@@ -81,9 +81,10 @@
            <span>{{ parseTime(scope.row.create_time) }}</span>
          </template>
        </el-table-column>
-       <el-table-column label="操作" width="180" align="center" class-name="small-padding fixed-width">
+       <el-table-column label="操作" width="220" align="center" class-name="small-padding fixed-width">
          <template #default="scope">
            <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['changcunjiyi:resource:edit']">修改</el-button>
+           <el-button link type="danger" icon="Edit" @click="saleTicket(scope.row)" v-hasPermi="['changcunjiyi:resource:edit']">发售</el-button>
            <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['changcunjiyi:resource:remove']">删除</el-button>
          </template>
        </el-table-column>
@@ -92,7 +93,7 @@
      <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
  
      <!-- 添加或修改对话框 -->
-     <el-dialog :title="title" v-model="open" width="700px" append-to-body :close-on-press-escape=false :close-on-click-modal=false>
+     <el-dialog :title="title" v-model="open" width="700px" append-to-body :close-on-press-escape=false :close-on-click-modal=false >
        <el-form ref="postRef" :model="form" :rules="rules" label-width="200px">
          <el-form-item label="邮折名称" prop="ticket_name">
            <el-input v-model="form.ticket_name" placeholder="请输入 邮折名称" />
@@ -100,8 +101,8 @@
          <el-form-item label="数字藏品类型" prop="ticket_type">
            <el-radio-group v-model="form.ticket_type">
             <!-- <el-radio :value="1">头像</el-radio> -->
-            <el-radio key=2 label=2 border>图片</el-radio>
-            <el-radio key=3 label=3 border>视频</el-radio>
+            <el-radio :key=2 :label=2 border>图片</el-radio>
+            <el-radio :key=3 :label=3 border>视频</el-radio>
             <!-- <el-radio :value="4">微博</el-radio> -->
             <!-- <el-radio :value="5">3D</el-radio> -->
              <!-- <el-radio v-for='dict in [{id:2, name:"图片"}, {id:3, name:"视频"},] ' :key="dict.id" :label="dict.id">{{ dict.name }}</el-radio> -->
@@ -141,7 +142,7 @@
            <el-input-number v-model="form.amount" :min="1" :max="50000"/>
          </el-form-item>
          <el-form-item label="DAR登记ID" prop="registration_id">
-           <el-input v-model="form.registration_id" type="text" placeholder="请输入 DAR登记ID" />
+           <el-input-number v-model="form.registration_id" :min="0" type="text" placeholder="请输入 DAR登记ID" />
          </el-form-item>
        </el-form>
        <template #footer>
@@ -155,10 +156,10 @@
  </template>
  
  <script setup name="Post">
-import { listResource, addResource, delResource, getResource, updateResource } from '@/api/fangcunjiyi/resource';
- import { listTicket } from '@/api/fangcunjiyi/ticket'
- import { listAllTickets } from '@/api/fangcunjiyi/ticket';
- 
+import { listTicket, addTicket, delTicket, getTicket, updateTicket, listAllTickets } from '@/api/fangcunjiyi/ticket'
+import { getCurrentInstance } from 'vue';
+import { saleStatus } from '../../../api/fangcunjiyi/ticket';
+
  const imageType = ref(["png", "jpg", "jpeg", "gif"])
  
  const showPicViewer = ref()
@@ -180,7 +181,6 @@ const { fangcun_ticket_available_status } = proxy.useDict('fangcun_ticket_availa
  const total = ref(0);
  const title = ref('');
 
- 
  const data = reactive({
    form: {
       order: '0',
@@ -202,7 +202,7 @@ const { queryParams, form, rules } = toRefs(data);
  
  const tickets = ref([]);
  
- /** 查询岗位列表 */
+ /** 查询 邮折 列表 */
  function getList() {
    loading.value = true;
    listTicket(queryParams.value).then((response) => {
@@ -260,27 +260,45 @@ const { queryParams, form, rules } = toRefs(data);
  function handleUpdate(row) {
    reset();
    const id = row.id || ids.value;
-   getResource(id).then((response) => {
+   getTicket(id).then((response) => {
      form.value = response.data;
      form.value.status = '' + response.data.status; // 必选转为string，否则界面不显示
      open.value = true;
      title.value = '修改数据';
    });
  }
+ /** 发售按钮操作 */
+ async function saleTicket(row) {
+   reset();
+   const id = row.id || ids.value;
+
+   await proxy.$modal.confirm('是否确认发售  "' + row.ticket_name + '" 邮折?')
+     .then(async function (da) {
+       await saleStatus({ "id": 36, "sale_status": 2 }).then((response) => {
+         if (response.success == false) {
+           throw new Error('发售失败:' + response.msg);
+         }
+         console.log(response);
+       });
+       getList();
+       proxy.$modal.msgSuccess('发售成功');
+     }).catch(() => {});
+ }
+
  
  /** 提交按钮 */
  function submitForm() {
    proxy.$refs['postRef'].validate((valid) => {
      if (valid) {
-       form.value.status = parseInt(form.value.status);
+       form.value.ticket_type = parseInt(form.value.ticket_type);
        if (form.value.id != undefined) {
-         updateResource(form.value).then((response) => {
+         updateTicket(form.value).then((response) => {
            proxy.$modal.msgSuccess('修改成功');
            open.value = false;
            getList();
          });
        } else {
-         addResource(form.value).then((response) => {
+         addTicket(form.value).then((response) => {
            proxy.$modal.msgSuccess('新增成功');
            open.value = false;
            getList();
@@ -297,7 +315,7 @@ const { queryParams, form, rules } = toRefs(data);
    proxy.$modal
      .confirm('是否确认删除名称为"' + row.name + '"的数据项？')
      .then(function () {
-       return delResource(id);
+       return delTicket(id);
      })
      .then(() => {
        getList();
@@ -317,12 +335,13 @@ const { queryParams, form, rules } = toRefs(data);
    );
  }
  
- function getTicket() {
+function getTicket2() {
+  console.log("2222");
    listAllTickets().then((resp) => {
      tickets.value = resp.data;
    });
  }
- getTicket();
+ getTicket2();
  
  getList();
  </script>
