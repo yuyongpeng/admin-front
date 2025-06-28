@@ -1,0 +1,28 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true, //粘贴代码自动格式化代码
+  // "editor.formatOnSave": true, //保存文件自动格式化代码
+  "editor.formatOnType": true, // 输入时自动格式化。这可能会在输入某些字符（如分号）后自动格式化代码。
+  "editor.tabSize": 2, // tab 2个空格
+  "editor.insertSpaces": true, // tab 插入空格
+
+  "prettier.enable": true, // 开启 prettier
+  "prettier.requireConfig": true, // 使用配置文件
+  "[jsonc]": {
+    // 单独指定某类文件使用特定的格式化工具
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 使用prettier格式化jsonc
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "commentTranslate.browse.mode": "contrast"
+}
