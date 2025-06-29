@@ -13,6 +13,8 @@
       </el-form-item>
     </el-form>
 
+  
+
     <!-- <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="Plus" @click="handleAdd" v-hasPermi="['changcunjiyi:resource:add']">新增</el-button>
@@ -88,10 +90,14 @@
       </template>
     </el-dialog>
   </div>
+  11111
+  <e-charts class="chart" :option="option" />
 </template>
 
 <script setup name="Post">
-import { listUser, addUser, delUser, getUser, updateUser} from '@/api/fangcunjiyi/user';
+import { listUser, addUser, delUser, getUser, updateUser } from '@/api/fangcunjiyi/user';
+import * as echarts from 'echarts';
+
 const imageType = ref(["png", "jpg", "jpeg", "gif"])
 
 const showPicViewer = ref()
@@ -131,6 +137,40 @@ const data = reactive({
 
 const { queryParams, form, rules } = toRefs(data);
 
+//模拟数据value的字段对应Y轴，name字段对应X轴
+const datax=ref([
+    {value:11,name:'A'},
+    {value:31,name:'B'},
+    {value:75,name:'C'},
+    {value:25,name:'D'},
+    {value:16,name:'E'},
+  ])
+ 
+const option=computed(()=>{
+  return{
+    xAxis:{
+      type:'category',
+      data:datax.value.map(v=>v.name)
+    },
+    yAxis:{
+      type:'value',
+    },
+    series:[
+      {
+        type:'line',
+        data:datax.value.map(v=>v.value)
+      }
+    ]
+  }
+})
+ 
+// 定时更新数据 每一秒更新一次数据
+setInterval(()=>{
+  datax.value=datax.value.map(item=>({
+    ...item,
+    value:Math.random()*100,  //Math()随机函数，这里是随机生成100以内的数字
+  }))
+},1000)  //单位ms，1000ms即是1秒
 
 /** 查询岗位列表 */
 function getList() {
@@ -255,4 +295,7 @@ getList();
 /* .el-table .el-image {
   overflow: visible;  确保图片可以正常显示 
 }*/
+.chart{
+  height: 400px;
+}
 </style>

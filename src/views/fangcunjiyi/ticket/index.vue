@@ -84,9 +84,10 @@
        </el-table-column>
        <el-table-column label="操作" width="220" align="center" class-name="small-padding fixed-width">
          <template #default="scope">
-           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['changcunjiyi:resource:edit']">修改</el-button>
-           <el-button link type="danger" icon="Edit" @click="saleTicket(scope.row)" v-hasPermi="['changcunjiyi:resource:edit']">发售</el-button>
-           <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['changcunjiyi:resource:remove']">删除</el-button>
+           <el-button link type="primary" icon="Edit" @click="handleExport(scope.row.id)" v-hasPermi="['changcunjiyi:ticket:export']">导出qrcode</el-button>
+           <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['changcunjiyi:ticket:edit']">修改</el-button>
+           <el-button link type="danger" icon="Edit" @click="saleTicket(scope.row)" v-hasPermi="['changcunjiyi:ticket:edit']">发售</el-button>
+           <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['changcunjiyi:ticket:del']">删除</el-button>
          </template>
        </el-table-column>
      </el-table>
@@ -326,9 +327,9 @@ const { queryParams, form, rules } = toRefs(data);
  }
  
  /** 导出按钮操作 */
- function handleExport() {
+ function handleExport(ticketId) {
    proxy.download(
-     'system/post/export',
+     'fangcunjiyi/collection/export/'+ticketId,
      {
        ...queryParams.value,
      },

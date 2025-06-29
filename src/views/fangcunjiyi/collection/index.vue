@@ -33,7 +33,7 @@
        </el-form-item>
      </el-form>
  
-     <!-- <el-row :gutter="10" class="mb8">
+     <el-row :gutter="10" class="mb8">
        <el-col :span="1.5">
          <el-button type="primary" plain icon="Plus" @click="handleAdd" v-hasPermi="['fangcunjiyi:collection:add']">新增</el-button>
        </el-col>
@@ -47,7 +47,7 @@
          <el-button type="warning" plain icon="Download" @click="handleExport" v-hasPermi="['fangcunjiyi:collection:export']">导出</el-button>
        </el-col>
        <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
-     </el-row> -->
+     </el-row> 
  
      <el-table v-loading="loading" :data="postList" stripe="true" highlight-current-row="true" @selection-change="handleSelectionChange">
        <el-table-column type="selection" width="55" align="center" />
@@ -384,7 +384,7 @@ const { fangcun_sale_status } = proxy.useDict('fangcun_sale_status');
  /** 导出按钮操作 */
  function handleExport() {
    proxy.download(
-     'system/post/export',
+     'fangcunjiyi/collection/export',
      {
        ...queryParams.value,
      },

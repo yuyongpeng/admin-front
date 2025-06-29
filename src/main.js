@@ -46,6 +46,10 @@ import DictTag from '@/components/DictTag';
 //文件列表显示组件
 import FileList from '@/components/FileList';
 
+// echart
+import Echarts from 'vue-echarts';
+import * as echarts from 'echarts';
+
 const app = createApp(App);
 
 // 全局方法挂载
@@ -57,6 +61,7 @@ app.config.globalProperties.handleTree = handleTree;
 app.config.globalProperties.addDateRange = addDateRange;
 app.config.globalProperties.selectDictLabel = selectDictLabel;
 app.config.globalProperties.selectDictLabels = selectDictLabels;
+app.config.globalProperties.$charts = echarts;
 
 // 全局组件挂载
 app.component('DictTag', DictTag);
@@ -68,6 +73,7 @@ app.component('ImagePreview', ImagePreview);
 app.component('RightToolbar', RightToolbar);
 app.component('Editor', Editor);
 app.component('FileList', FileList);
+app.component('e-charts', Echarts);
 
 app.use(router);
 app.use(store);
