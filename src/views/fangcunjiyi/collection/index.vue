@@ -43,9 +43,9 @@
        <el-col :span="1.5">
          <el-button type="danger" plain icon="Delete" :disabled="multiple" @click="handleDelete" v-hasPermi="['fangcunjiyi:collection:del']">删除</el-button>
        </el-col>
-       <el-col :span="1.5">
+       <!-- <el-col :span="1.5">
          <el-button type="warning" plain icon="Download" @click="handleExport" v-hasPermi="['fangcunjiyi:collection:export']">导出</el-button>
-       </el-col>
+       </el-col> -->
        <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
      </el-row> 
  
