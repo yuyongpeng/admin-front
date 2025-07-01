@@ -1,23 +1,43 @@
 <template>
   <div class="app-container home">
     <el-card class="update-log">
-    <el-row>
-      <div class="block">
-      <span class="demonstration">选择日期范围</span>
-      <el-date-picker
-        v-model="value1"
-        type="daterange"
-        range-separator="To"
-        start-placeholder="Start date"
-        end-placeholder="End date"
-        :size="size"
-      />
-    </div>
+      <el-row>
+        <div class="block">
+        <span class="demonstration">选择查询日期范围         </span>&nbsp;
+        <el-date-picker
+          v-model="pickDateValue"    
+          type="daterange"
+          range-separator="=>"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          format="YYYY/MM/DD"
+          value-format="YYYY-MM-DD"
+          :size="size"
+        />
+      </div>
+      &nbsp; <el-button type="primary" @click="queryForm">确 定</el-button>
+      </el-row>
 
-      <el-col :span="6">
-        <el-statistic title="Daily active users" :value="268500" />
-      </el-col>
-    </el-row>
+      <el-card class="update-log">
+        <el-table v-loading="loading" :data="ticketGetCountList" stripe="true" highlight-current-row="true" show-summary>
+        <!-- <el-table-column label="藏品领取数量统计"> -->
+          <el-table-column label="邮折名称" align="center" prop="ticket_name" />
+          <!-- <el-table-column label="藏品数量" align="center" prop="ticket_id" /> -->
+          <el-table-column label="领取数量" align="center" prop="sum" />
+        <!-- </el-table-column> -->
+        </el-table>
+      </el-card>
+      <br>
+      <el-card class="update-log">
+        <el-table v-loading="loading" :data="ticketTransferCountList" stripe="true" highlight-current-row="true" show-summary>
+        <!-- <el-table-column label="藏品转增数量统计"> -->
+          <el-table-column label="邮折名称" align="center" prop="ticket_name" />
+          <!-- <el-table-column label="藏品数量" align="center" prop="ticket_id" /> -->
+          <el-table-column label="转增数量" align="center" prop="sum" />
+        <!-- </el-table-column> -->
+        </el-table>
+      </el-card>
+
     </el-card>
     <br>
     <el-card class="update-log">
@@ -107,8 +127,8 @@
 
 <script setup name="Index">
 import {queryUserDayCount, queryUserWeekCount, queryUserMonthCount} from '@/api/fangcunjiyi/user';
-import { queryCollectionDayCount, queryCollectionTicketDayCount } from '@/api/fangcunjiyi/collection';
-import {queryTransferDayCount, queryTransferTicketDayCount} from '@/api/fangcunjiyi/transfer';
+import { queryCollectionDayCount, queryCollectionTicketDayCount, queryCollectionTicketCount } from '@/api/fangcunjiyi/collection';
+import {queryTransferDayCount, queryTransferTicketDayCount, queryTransferTicketCount } from '@/api/fangcunjiyi/transfer';
 import { listAllTickets } from '@/api/fangcunjiyi/ticket'
 
 // import {ref} from ''
@@ -118,8 +138,13 @@ const currentTicketId = ref();
 const currentTicketName = ref('未选择'); // 当前选择的邮折名称
 const currentTicketId2 = ref();
 const currentTicketName2 = ref('未选择'); // 当前选择的邮折名称
-const value1 = ref('');
+const pickDateValue = ref();
 const { proxy } = getCurrentInstance(); 
+const ticketGetCount = ref(0);
+const ticketTransferCount = ref(0);
+const ticketGetCountList = ref([]);
+const ticketTransferCountList = ref([]);
+
 
 //模拟数据value的字段对应Y轴，name字段对应X轴
 const dataDay = ref([]);
@@ -577,6 +602,29 @@ function getTicket() {
    });
  }
 
+function queryForm() {
+  let x = {
+    start_date: pickDateValue.value[0],
+    end_date: pickDateValue.value[1],
+  }
+  queryCollectionTicketCount(x).then((resp) => {
+    ticketGetCount.value = 0;
+    // ticketGetCountList.value = resp.data;
+    ticketGetCountList.value = resp.data.map((val) => {
+      ticketGetCount.value += val._sum.sum;
+      return { ticket_id: val.ticket_id, ticket_name: val.ticket_name, sum: val._sum.sum }
+    })
+  });
+
+  queryTransferTicketCount(x).then((resp) => {
+    ticketTransferCount.value = 0;
+    // ticketGetCountList.value = resp.data;
+    ticketTransferCountList.value = resp.data.map((val) => {
+      ticketTransferCount.value += val._sum.sum;
+      return {ticket_id:val.ticket_id, ticket_name: val.ticket_name, sum: val._sum.sum}
+    })
+  });
+}
 
 /** 按照“天“查询用户的注册数 */
 async function getUserDayCount() {

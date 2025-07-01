@@ -58,3 +58,12 @@ export function queryCollectionTicketDayCount(ticketId) {
     method: 'get',
   });
 }
+
+// 按照时间查询 邮折对应的藏品领取数量
+export function queryCollectionTicketCount(data) {
+  return request({
+    url: '/fangcunjiyi/collection/countticket',
+    method: 'post',
+    data: data,
+  });
+}

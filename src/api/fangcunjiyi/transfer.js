@@ -58,3 +58,12 @@ export function queryTransferTicketDayCount(ticketId) {
     method: 'get',
   });
 }
+
+// 按照时间查询 邮折对应的藏品 转增 数量
+export function queryTransferTicketCount(data) {
+  return request({
+    url: '/fangcunjiyi/transfer/countticket',
+    method: 'post',
+    data: data,
+  });
+}
