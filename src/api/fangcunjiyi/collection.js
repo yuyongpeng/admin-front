@@ -42,3 +42,19 @@ export function delCollection(collectionId) {
     method: 'delete',
   });
 }
+
+// 查询藏品按照 天 统计的数量
+export function queryCollectionDayCount() {
+  return request({
+    url: '/fangcunjiyi/collection/daycount/1',
+    method: 'get',
+  });
+}
+
+// 查询藏品按照 天 统计的数量
+export function queryCollectionTicketDayCount(ticketId) {
+  return request({
+    url: '/fangcunjiyi/collection/daycountticket/' + String(ticketId),
+    method: 'get',
+  });
+}

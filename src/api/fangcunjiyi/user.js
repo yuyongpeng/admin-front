@@ -42,3 +42,27 @@ export function delUser(userId) {
     method: 'delete',
   });
 }
+
+// 按照 天 统计用户数量
+export function queryUserDayCount() {
+  return request({
+    url: '/fangcunjiyi/user/daycount/1',
+    method: 'get',
+  });
+}
+
+// 按照 周 统计用户数量
+export function queryUserWeekCount() {
+  return request({
+    url: '/fangcunjiyi/user/weekcount/1',
+    method: 'get',
+  });
+}
+
+// 按照 月 统计用户数量
+export function queryUserMonthCount() {
+  return request({
+    url: '/fangcunjiyi/user/monthcount/1',
+    method: 'get',
+  });
+}
