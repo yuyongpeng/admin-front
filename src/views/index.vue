@@ -139,6 +139,17 @@ const userDayCountOption=computed(()=>{
           saveAsImage: {}
         }
     },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
+    },
     dataZoom: [
       {
         show: true,
@@ -167,7 +178,7 @@ const userDayCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '注册数',
         smooth: true,
         data:dataDay.value.map(v=>v.y)
       }
@@ -191,6 +202,17 @@ const userWeekCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -220,7 +242,7 @@ const userWeekCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '注册数',
         smooth: true,
         data:dataWeek.value.map(v=>v.y)
       }
@@ -243,6 +265,17 @@ const userMonthCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -272,7 +305,7 @@ const userMonthCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '注册数',
         smooth: true,
         data:dataMonth.value.map(v=>v.y)
       }
@@ -297,6 +330,17 @@ const collectionDayCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -326,7 +370,7 @@ const collectionDayCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '领取数',
         smooth: true,
         data:dataDayCollectionCount.value.map(v=>v.y)
       }
@@ -350,6 +394,17 @@ const collectionTicketDayCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -379,7 +434,7 @@ const collectionTicketDayCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '领取数',
         smooth: true,
         data:dataCollectionTicketDayCount.value.map(v=>v.y)
       }
@@ -404,6 +459,17 @@ const transferDayCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -433,7 +499,7 @@ const transferDayCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '转增次数',
         smooth: true,
         data:dataDayTransferCount.value.map(v=>v.y)
       }
@@ -457,6 +523,17 @@ const transferTicketDayCountOption=computed(()=>{
           },
           saveAsImage: {}
         }
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(50,50,50,0.7)',
+      borderColor: '#333',
+      borderWidth: 1,
+      padding: 10,
+      textStyle: {
+        color: '#fff',
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -486,7 +563,7 @@ const transferTicketDayCountOption=computed(()=>{
     series:[
       {
         type: 'line',
-        name: '1234',
+        name: '转增次数',
         smooth: true,
         data:dataTransferTicketDayCount.value.map(v=>v.y)
       }
