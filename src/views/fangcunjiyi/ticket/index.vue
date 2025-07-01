@@ -315,7 +315,7 @@ const { queryParams, form, rules } = toRefs(data);
    reset();
    const id = row.id || ids.value;
    proxy.$modal
-     .confirm('是否确认删除名称为"' + row.name + '"的数据项？')
+     .confirm('是否确认删除数据项？')
      .then(function () {
        return delTicket(id);
      })
