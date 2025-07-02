@@ -35,13 +35,22 @@ const useUserStore = defineStore(
         return new Promise((resolve, reject) => {
           getInfo().then(res => {
             const user = res.user
-            const avatar = (user.avatar == "" || user.avatar == null) ? defAva : import.meta.env.VITE_APP_BASE_API + user.avatar;
-            if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-              this.roles = res.roles
-              this.permissions = res.permissions
+            let avatar;
+              // = (user.avatar == "" || user.avatar == null) ? defAva : import.meta.env.VITE_APP_BASE_API + user.avatar;
+            if (user.avatar.startsWith('http://') || user.avatar.startsWith('https://')) {
+              avatar = user.avatar;
+            } else if (user.avatar == '' || user.avatar == null) {
+              avatar = defAva;
             } else {
-              this.roles = ['ROLE_DEFAULT']
+              avatar = import.meta.env.VITE_APP_BASE_API + user.avatar;
             }
+              if (res.roles && res.roles.length > 0) {
+                // 验证返回的roles是否是一个非空数组
+                this.roles = res.roles;
+                this.permissions = res.permissions;
+              } else {
+                this.roles = ['ROLE_DEFAULT'];
+              }
             this.id = user.userId
             this.name = user.userName
             this.avatar = avatar
