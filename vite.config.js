@@ -5,6 +5,8 @@ import createVitePlugins from './vite/plugins'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
+  console.log('********** ' + mode + ' **********');
+  console.log('********** ' + env.VITE_APP_TITLE + ' **********');
   const { VITE_APP_ENV, VITE_PORT, VITE_APP_BASE_API, VITE_APP_BASE_URL } = env;
   return {
     // 部署生产环境和开发环境下的URL。
