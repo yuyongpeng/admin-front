@@ -17,27 +17,28 @@
       </div>
       &nbsp; <el-button type="primary" @click="queryForm">确 定</el-button>
       </el-row>
-
-      <el-card class="update-log">
+      <el-row>
+      
+      <el-card class="update-log" style="width: 50%;">
         <el-table v-loading="loading" :data="ticketGetCountList" stripe="true" highlight-current-row="true" show-summary>
-        <!-- <el-table-column label="藏品领取数量统计"> -->
+        <el-table-column label="藏品领取数量统计" align="center">
           <el-table-column label="邮折名称" align="center" prop="ticket_name" />
           <!-- <el-table-column label="藏品数量" align="center" prop="ticket_id" /> -->
           <el-table-column label="领取数量" align="center" prop="sum" />
-        <!-- </el-table-column> -->
+        </el-table-column>
         </el-table>
       </el-card>
-      <br>
-      <el-card class="update-log">
+      <el-card class="update-log" style="width: 50%;">
         <el-table v-loading="loading" :data="ticketTransferCountList" stripe="true" highlight-current-row="true" show-summary>
-        <!-- <el-table-column label="藏品转增数量统计"> -->
+        <el-table-column label="藏品转增数量统计"  align="center">
           <el-table-column label="邮折名称" align="center" prop="ticket_name" />
           <!-- <el-table-column label="藏品数量" align="center" prop="ticket_id" /> -->
           <el-table-column label="转增数量" align="center" prop="sum" />
-        <!-- </el-table-column> -->
+        </el-table-column>
         </el-table>
       </el-card>
 
+      </el-row>
     </el-card>
     <br>
     <el-card class="update-log">
