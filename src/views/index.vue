@@ -178,16 +178,18 @@ const userDayCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -242,16 +244,18 @@ const userWeekCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -305,16 +309,18 @@ const userMonthCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -370,16 +376,18 @@ const collectionDayCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -434,16 +442,18 @@ const collectionTicketDayCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -499,16 +509,18 @@ const transferDayCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{
@@ -563,16 +575,18 @@ const transferTicketDayCountOption=computed(()=>{
     },
     dataZoom: [
       {
+        type: 'slider',
         show: true,
+        xAxisIndex: 0,
         realtime: true,
         start: 0,
-        end: 100
+        end: 100,
+        filterMode: 'none'
       },
       {
         type: 'inside',
-        realtime: true,
-        start: 0,
-        end: 100
+        xAxisIndex: 0,
+        filterMode: 'none'
       }
     ],
     xAxis:{

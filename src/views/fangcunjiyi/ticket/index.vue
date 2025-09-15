@@ -126,6 +126,9 @@
          <el-form-item label="数字藏品 原图" prop="landing_uri">
            <ImageUpload limit="1" fileSize="5" :fileType="imageType" isShowTip="true" isFormat="true" v-model="form.origin_uri"  ></ImageUpload>
          </el-form-item>
+         <el-form-item label="数字藏品 作者" prop="author">
+          <el-input v-model="form.author" type="text" placeholder="请输入作者名" />
+         </el-form-item>
          <el-form-item label="发行方企业logo" prop="publisher_logo">
            <ImageUpload limit="1" fileSize="5" :fileType="imageType" isShowTip="true" isFormat="true" v-model="form.publisher_logo"  ></ImageUpload>
          </el-form-item>
