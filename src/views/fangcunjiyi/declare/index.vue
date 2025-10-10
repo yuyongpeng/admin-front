@@ -91,7 +91,7 @@
 </template>
 
 <script setup name="Post">
-import { listDeclare, addDeclare, delDeclare, getDeclare, updateDeclare } from '@/api/fangcunjiyi/declare';
+import { addDeclare, delDeclare, getDeclare, listDeclare, updateDeclare } from '@/api/fangcunjiyi/declare';
 
 const { proxy } = getCurrentInstance();
 const { sys_data_status } = proxy.useDict('sys_data_status');

@@ -48,7 +48,7 @@ export default defineConfig(({ mode, command }) => {
           // api: "modern-compiler" | "modern" | "legacy"
           // (如果安装了sass-embedded，默认为"modern-compiler"，否则为 "modern").
           // 为获得最佳性能，建议使用 api: "modern-compiler" 和 sass-embedded 软件包。"legacy" API 已过时，将在 Vite 7 中移除。
-          api: 'modern-compiler', // 自动将 variables.scss 文件引入到所有的 SCSS 文件中。 最好只放变量的scss
+          api: 'modern-compiler', // 自动将 variables.scss 文件引入到所有的 SCSS 文件中。 最好只放变量的scss
           // additionalData: '@use "@/assets/styles/variables.module.scss" as *; ',     // 只要添加了，就报错？？？？？？
           javascriptEnabled: true,
         },
@@ -70,5 +70,4 @@ export default defineConfig(({ mode, command }) => {
     },
   };
 })
-
 
