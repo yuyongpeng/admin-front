@@ -60,8 +60,8 @@
       <el-table-column label="TXID" align="center" prop="transfer_tx_id" />
       <el-table-column label="证书" align="center" prop="certificate_url">
         <template #default="scope">
-          <el-image style="height: 50px" z-index="2" close-on-press-escape="false" :src="scope.row.resource_url" fit="cover" @click="showPicViwerx"></el-image>
-          <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.resource_url]"></el-image-viewer>
+          <el-image style="height: 50px" z-index="2" close-on-press-escape="false" :src="scope.row.certificate_url" fit="cover" @click="showPicViwerx"></el-image>
+          <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.certificate_url]"></el-image-viewer>
         </template>
       </el-table-column>
       <el-table-column label="藏品销售上链状态" align="center" prop="status">
@@ -386,6 +386,7 @@ function handleDelete(row) {
 function handleDeleteSJT(row) {
   reset();
   const id = row.id || ids.value;
+
   proxy.$modal
     .confirm('是否确认删除名称为:"' + row.collection_name + '" 的证书？')
     .then(function () {
