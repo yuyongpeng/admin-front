@@ -387,7 +387,7 @@ function handleDeleteSJT(row) {
   reset();
   const id = row.id || ids.value;
   proxy.$modal
-    .confirm('是否确认删除名称为"' + row.name + '"的证书？')
+    .confirm('是否确认删除名称为:"' + row.collection_name + '" 的证书？')
     .then(function () {
       return sjtHide(row.asset_number);
     })
