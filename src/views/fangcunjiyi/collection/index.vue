@@ -60,8 +60,9 @@
       <el-table-column label="TXID" align="center" prop="transfer_tx_id" />
       <el-table-column label="证书" align="center" prop="certificate_url">
         <template #default="scope">
-          <el-image style="height: 50px" z-index="2" close-on-press-escape="false" :src="scope.row.certificate_url" fit="cover" @click="showPicViwerx"></el-image>
-          <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.certificate_url]"></el-image-viewer>
+        <el-image style="height: 50px" :src="scope.row.certificate_url" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.certificate_url]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
+          <!-- <el-image style="height: 50px" z-index="2" close-on-press-escape="false" :src="scope.row.certificate_url" fit="cover" @click="showPicViwerx"></el-image>
+          <el-image-viewer v-if="showPicViewer" @close="closePicViewer" :url-list="[scope.row.certificate_url]"></el-image-viewer> -->
         </template>
       </el-table-column>
       <el-table-column label="藏品销售上链状态" align="center" prop="status">
