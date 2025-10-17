@@ -44,9 +44,9 @@ export function delResource(resourceId) {
 }
 
 // 删除 苏结通证书
-export function sjtHide(assetNumber) {
+export function sjtHide(regCode) {
   return request({
-    url: 'fangcunjiyi/resource/sjtHide/' + assetNumber,
+    url: 'fangcunjiyi/resource/sjtHide/' + regCode,
     method: 'delete',
   });
 }
