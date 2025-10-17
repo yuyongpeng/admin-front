@@ -389,7 +389,7 @@ function handleDeleteSJT(row) {
   proxy.$modal
     .confirm('是否确认删除名称为:"' + row.collection_name + '" 的证书？')
     .then(function () {
-      return sjtHide(row.reg_code);
+      return sjtHide(row.asset_number);
     })
     .then(() => {
       getList();
