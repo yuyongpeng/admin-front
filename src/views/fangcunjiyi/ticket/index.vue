@@ -146,9 +146,9 @@
            <!-- <el-input v-model="form.amount" type="text" placeholder="请输入发行数量" /> -->
            <el-input-number v-model="form.amount" :min="1" :max="50000"/>
          </el-form-item>
-         <el-form-item label="DAR登记ID" prop="registration_id">
+         <!-- <el-form-item label="DAR登记ID" prop="registration_id">
            <el-input-number v-model="form.registration_id" :min="0" type="text" placeholder="请输入 DAR登记ID" />
-         </el-form-item>
+         </el-form-item> -->
        </el-form>
        <template #footer>
          <div class="dialog-footer">
@@ -277,9 +277,9 @@ const { queryParams, form, rules } = toRefs(data);
    reset();
    const id = row.id || ids.value;
 
-   await proxy.$modal.confirm('是否确认发售  "' + row.ticket_name + '" 邮折?')
+   await proxy.$modal.confirm('是否确认发售  "' + row.ticket_name + '  id=' + row.id + '" 邮折?')
      .then(async function (da) {
-       await saleStatus({ "id": 36, "sale_status": 2 }).then((response) => {
+       await saleStatus({ "id": row.id, "sale_status": 2 }).then((response) => {
          if (response.success == false) {
            throw new Error('发售失败:' + response.msg);
          }
