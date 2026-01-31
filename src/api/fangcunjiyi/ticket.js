@@ -26,10 +26,18 @@ export function listAllTickets(query) {
 //   });
 // }
 
-// 查询 ticket 详细
+// 查询 单条 ticket 详细
 export function getTicket(ticketId) {
   return request({
     url: '/fangcunjiyi/ticket/' + ticketId,
+    method: 'get',
+  });
+}
+
+// 查询 多条 ticket 详细
+export function getTickets(ticketIds) {
+  return request({
+    url: '/fangcunjiyi/ticket/getMulti/' + ticketIds,
     method: 'get',
   });
 }

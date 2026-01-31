@@ -230,7 +230,6 @@
   </div>
 
 </template>
-
 <script setup name="Collection">
 import { addCollection, delCollection, getCollection, listCollection, updateCollection } from '@/api/fangcunjiyi/collection';
 import { sjtHide } from '@/api/fangcunjiyi/resource';

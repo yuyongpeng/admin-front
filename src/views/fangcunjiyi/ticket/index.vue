@@ -158,9 +158,9 @@
        </template>
      </el-dialog>
    </div>
- </template>
+</template>
  
- <script setup name="Post">
+<script setup name="Post">
 import { listTicket, addTicket, delTicket, getTicket, updateTicket, listAllTickets } from '@/api/fangcunjiyi/ticket'
 import { getCurrentInstance } from 'vue';
 import { saleStatus } from '../../../api/fangcunjiyi/ticket';
