@@ -154,7 +154,7 @@ const tickets = ref([]);
 /** 查询 recommend_img 列表 */
 function getList() {
   loading.value = true;
-  listSuit(queryParams.value).then((response) => {
+  listRecommendImg(queryParams.value).then((response) => {
     postList.value = response.rows;
     console.log(response.data);
     total.value = response.total;
