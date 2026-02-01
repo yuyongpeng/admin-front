@@ -21,7 +21,7 @@ export default defineConfig(({ mode, command }) => {
         enable: true,                             // 是否启用
         devtoolsUIRoute: '/__devtools',           // 调试界面路由
         componentPreviewEnabled: true,            // 是否显示预览
-        injectInDev: true,                        // 只在开发模式注入
+        injectInDev: false,                        // 只在开发模式注入
         componentMetadata: true                   // 显示组件信息
       }),
       createVitePlugins(env, command === 'build'),
