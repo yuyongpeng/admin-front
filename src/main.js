@@ -90,6 +90,9 @@ app.use(ElementPlus, {
   size: Cookies.get('size') || 'default',
 });
 
-app.config.devtools = true
+// app.config.devtools = true
 
 app.mount('#app');
+
+
+
