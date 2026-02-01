@@ -15,15 +15,7 @@ export default defineConfig(({ mode, command }) => {
     // 例如 https://www.ruoyi.vip/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.ruoyi.vip/admin/，则设置 baseUrl 为 /admin/。
     base: VITE_APP_ENV === 'production' ? '/' : '/',
     plugins: [
-      vueDevTools({
-        componentGlobs: ['src/**/*.{vue,ts,js}'], // 匹配组件路径
-        launchEditor: 'code',                     // 编辑器
-        enable: true,                             // 是否启用
-        devtoolsUIRoute: '/__devtools',           // 调试界面路由
-        componentPreviewEnabled: true,            // 是否显示预览
-        injectInDev: false,                        // 只在开发模式注入
-        componentMetadata: true                   // 显示组件信息
-      }),
+      vueDevTools(),
       createVitePlugins(env, command === 'build'),
     ],
     define: {
