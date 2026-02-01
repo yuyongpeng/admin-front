@@ -90,7 +90,7 @@
           <el-input v-model="form.realname" disabled/>
         </el-form-item>
         <el-form-item label="昵称" prop="nick_name">
-          <el-input v-mode="form.nick_name" disabled/>
+          <el-input v-model="form.nick_name" disabled/>
         </el-form-item>
         <el-form-item label="头图" prop="avatar">
           <div v-if='form.avatar != ""'>
