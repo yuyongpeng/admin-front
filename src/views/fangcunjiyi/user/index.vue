@@ -38,6 +38,12 @@
       <el-table-column label="unionid" align="center" prop="union_id" />
       <el-table-column label="手机" align="center" prop="mobile" />
       <el-table-column label="姓名" align="center" prop="realname" />
+      <el-table-column label="昵称" align="center" prop="nick_name"/>
+      <el-table-column label="头像" align="center" prop="avatar">
+        <template #default="scope">
+          <el-image style="width: 100px; height: 100px" :src="scope.row.avatar" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.avatar]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
+        </template>
+      </el-table-column>
       <el-table-column label="身份证号" align="center" prop="id_card_no" />
       <el-table-column label="daop account id" align="center" prop="daop_account_id" />
       <el-table-column label="daop user id" align="center" prop="daop_user_id" />
