@@ -90,6 +90,5 @@ app.use(ElementPlus, {
   size: Cookies.get('size') || 'default',
 });
 
-app.config.Vue.config.devtools = true
 
 app.mount('#app');
