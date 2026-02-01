@@ -89,6 +89,12 @@
         <el-form-item label="姓名" prop="realname">
           <el-input v-model="form.realname" disabled/>
         </el-form-item>
+        <el-form-item label="昵称" prop="nick_name">
+          <el-input v-mode="form.nick_name" disabled/>
+        </el-form-item>
+        <el-form-item label="头图" prop="avatar">
+          <el-avatar :src="form.avatar"/>
+        </el-form-item>
         <el-form-item label="address" prop="daop_user_address">
           <el-input v-model="form.daop_user_address" disabled/>
         </el-form-item>
