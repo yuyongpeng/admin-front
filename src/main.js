@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import { createApp, Vue } from 'vue';
 
 import Cookies from 'js-cookie';
 
@@ -89,5 +89,8 @@ app.use(ElementPlus, {
   // 支持 large、default、small
   size: Cookies.get('size') || 'default',
 });
+
+
+Vue.config.devtools = true;
 
 app.mount('#app');
