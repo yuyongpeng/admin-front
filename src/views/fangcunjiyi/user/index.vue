@@ -44,6 +44,9 @@
           <div v-if='scope.row.avatar != ""'>
             <el-image style="width: 100px; height: 100px" :src="scope.row.avatar" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" :preview-src-list="[scope.row.avatar]" show-progress :initial-index="1" fit="cover" preview-teleported="true"/>
           </div>
+          <div v-else>
+            无
+          </div>
         </template>
       </el-table-column>
       <el-table-column label="身份证号" align="center" prop="id_card_no" />
