@@ -16,7 +16,7 @@ export default defineConfig(({ mode, command }) => {
     base: VITE_APP_ENV === 'production' ? '/' : '/',
     plugins: [createVitePlugins(env, command === 'build'), vueDevTools(), ],
     define: {
-      __VUE_PROD_DEVTOOLS__: true
+      // __VUE_PROD_DEVTOOLS__: true
     },
     resolve: {
       // https://cn.vitejs.dev/config/#resolve-alias
