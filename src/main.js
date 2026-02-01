@@ -1,4 +1,4 @@
-import { createApp, Vue } from 'vue';
+import { createApp } from 'vue';
 
 import Cookies from 'js-cookie';
 
@@ -91,6 +91,5 @@ app.use(ElementPlus, {
 });
 
 
-Vue.config.devtools = true;
 
 app.mount('#app');
