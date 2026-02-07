@@ -1,13 +1,13 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true, //粘贴代码自动格式化代码
-  // "editor.formatOnSave": true, //保存文件自动格式化代码
+  "editor.formatOnSave": false, //保存文件自动格式化代码
   "editor.formatOnType": true, // 输入时自动格式化。这可能会在输入某些字符（如分号）后自动格式化代码。
   "editor.tabSize": 2, // tab 2个空格
   "editor.insertSpaces": true, // tab 插入空格
   "vue.autoInsert.dotValue": true, // ref的响应式数据，自动添加value
 
-  "prettier.enable": true, // 开启 prettier
+  "prettier.enable": false, // 开启 prettier
   "prettier.requireConfig": true, // 使用配置文件
   "[jsonc]": {
     // 单独指定某类文件使用特定的格式化工具
@@ -38,6 +38,6 @@
     "@": "${workspaceRoot}/src"
   },
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false
+    "source.organizeImports": "never"
   }
 }
