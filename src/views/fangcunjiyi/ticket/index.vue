@@ -147,7 +147,7 @@
            <el-input-number v-model="form.amount" :min="1" :max="50000"/>
          </el-form-item>
          <el-form-item label="登记ID = 1000" prop="registration_id">
-           <el-input-number v-model="form.registration_id" :min="0" type="text" placeholder="请输入 DAR登记ID" />
+           <el-input-number v-model="form.registration_id" :min="0" type="text" placeholder="请输入登记ID" />
          </el-form-item>
        </el-form>
        <template #footer>
